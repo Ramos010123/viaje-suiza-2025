@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como · Suiza · Julio 2025</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0d1117;color:#e8edf3;font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d2137 0%,#1a3a5c 60%,#2e6fa3 100%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,0.97) 0%,rgba(13,17,23,0.35) 55%,transparent 100%)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5;z-index:0}
+.hero-content{position:relative;z-index:1;padding:0 40px 72px;max-width:900px;width:100%}
+.hero-eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#7ab8d4;margin-bottom:20px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,9vw,100px);font-weight:300;line-height:1;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:#a8d4e6}
+.hero-dates{font-size:14px;color:rgba(255,255,255,0.55);display:flex;gap:24px;flex-wrap:wrap}
+.hero-dates strong{color:white;font-weight:500}
+.scroll-hint{position:absolute;bottom:28px;right:40px;z-index:2;color:rgba(255,255,255,0.3);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.scroll-hint::after{content:'↓';font-size:16px;animation:bounce 1.8s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:980px;margin:0 auto;padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-btn{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);background:none;border:none;border-bottom:2px solid transparent;padding:15px 18px;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s;font-family:'Inter',sans-serif}
+.nav-btn:hover{color:rgba(255,255,255,.7)}
+.nav-btn.active{color:#7ab8d4;border-bottom-color:#7ab8d4}
+
+/* SECTIONS */
+section{max-width:980px;margin:0 auto;padding:72px 24px}
+.sec-label{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#4a7a9b;margin-bottom:52px;display:flex;align-items:center;gap:14px}
+.sec-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07)}
+
+/* DAY INTRO */
+.day-intro{margin-bottom:64px}
+.day-tag{display:inline-block;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#7ab8d4;background:rgba(122,184,212,0.1);border:1px solid rgba(122,184,212,0.2);padding:5px 14px;border-radius:20px;margin-bottom:16px}
+.day-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;line-height:1.1;margin-bottom:12px}
+.day-title em{font-style:italic;color:#a8d4e6}
+.day-desc{font-size:14px;color:rgba(255,255,255,0.5);max-width:600px;line-height:1.65}
+
+/* ACTIVITY BLOCK */
+.activity{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:3px;border-radius:16px;overflow:hidden;min-height:380px}
+.activity.reverse{direction:rtl}
+.activity.reverse>*{direction:ltr}
+.activity-img{position:relative;overflow:hidden;min-height:320px}
+.activity-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.activity:hover .activity-img img{transform:scale(1.04)}
+.activity-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,17,23,0.12),transparent)}
+.activity-img-label{position:absolute;bottom:14px;left:14px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);padding:4px 10px;border-radius:20px}
+.activity-content{background:#131920;padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
+.activity-time{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#4a7a9b;margin-bottom:10px}
+.activity-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;line-height:1.2;margin-bottom:14px;color:#f0f4f8}
+.activity-text{font-size:13.5px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:16px}
+.activity-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500;white-space:nowrap}
+.chip-lake{background:rgba(46,111,163,0.25);color:#7ab8d4;border:1px solid rgba(46,111,163,0.3)}
+.chip-green{background:rgba(74,124,89,0.25);color:#7ab87d;border:1px solid rgba(74,124,89,0.3)}
+.chip-gold{background:rgba(196,145,58,0.2);color:#c4a158;border:1px solid rgba(196,145,58,0.3)}
+.chip-red{background:rgba(192,57,43,0.2);color:#e07065;border:1px solid rgba(192,57,43,0.3)}
+
+/* MOMENT CARD */
+.moment-card{background:linear-gradient(135deg,#1a3a5c,#2e6fa3);border-radius:16px;padding:36px 40px;margin-bottom:3px}
+.moment-card.spa{background:linear-gradient(135deg,#1a2a1e,#2d5c3a)}
+.moment-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7ab8d4;margin-bottom:12px}
+.moment-card.spa .moment-label{color:#7ab87d}
+.moment-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;line-height:1.5;color:rgba(255,255,255,0.9)}
+
+/* MOMENT WITH SPA IMAGE */
+.moment-spa{border-radius:16px;overflow:hidden;margin-bottom:3px;display:grid;grid-template-columns:1fr 1fr;min-height:300px}
+.moment-spa-img{position:relative;overflow:hidden}
+.moment-spa-img img{width:100%;height:100%;object-fit:cover;display:block}
+.moment-spa-img::after{content:'';position:absolute;inset:0;background:rgba(13,17,23,0.15)}
+.moment-spa-text{background:linear-gradient(135deg,#1a2a1e,#2d5c3a);padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
+.moment-spa-text .moment-label{color:#7ab87d}
+.moment-spa-text .moment-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;line-height:1.5;color:rgba(255,255,255,0.9)}
+
+/* NOTES */
+.note{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.55;padding:12px 16px;border-radius:8px;margin-top:10px}
+.note-warn{background:rgba(196,145,58,0.1);border:1px solid rgba(196,145,58,0.25);color:rgba(255,230,150,0.8)}
+.note-tip{background:rgba(74,124,89,0.1);border:1px solid rgba(74,124,89,0.25);color:rgba(150,220,160,0.85)}
+.note-info{background:rgba(46,111,163,0.1);border:1px solid rgba(46,111,163,0.25);color:rgba(130,190,220,0.85)}
+.note-plain{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);font-size:13px;padding:12px 16px;border-radius:8px;margin-top:16px;line-height:1.55}
+
+/* GAP */
+.gap{height:3px;background:#0d1117}
+
+/* STRIP */
+.strip{position:relative;height:420px;overflow:hidden;border-radius:16px;margin-bottom:3px}
+.strip img{width:100%;height:100%;object-fit:cover;display:block}
+.strip-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,0.85) 0%,rgba(13,17,23,0.2) 60%,transparent 100%)}
+.strip-text{position:absolute;bottom:32px;left:40px;right:40px}
+.strip-text h3{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:white;margin-bottom:8px}
+.strip-text p{font-size:13px;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.6}
+
+/* VIDEO */
+.video-block{position:relative;border-radius:16px;overflow:hidden;margin-bottom:3px;background:#131920}
+.video-block iframe{width:100%;height:480px;border:none;display:block}
+.video-label{padding:18px 28px;font-size:13px;color:rgba(255,255,255,0.45)}
+.video-label strong{color:rgba(255,255,255,0.8)}
+
+/* PHOTO GRID 3 */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px}
+.photo-grid-item{position:relative;height:260px;overflow:hidden;border-radius:10px}
+.photo-grid-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.photo-grid-item:hover img{transform:scale(1.06)}
+.photo-grid-item .gl{position:absolute;bottom:12px;left:12px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);padding:3px 9px;border-radius:20px}
+
+/* PASS */
+.pass-card{background:#131920;border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden}
+.pass-head{background:linear-gradient(135deg,#1b3a6b,#2e6fa3);padding:28px 32px}
+.pass-head h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:4px}
+.pass-head p{font-size:13px;color:rgba(255,255,255,0.6)}
+.pass-head a{color:#7ab8d4}
+.pass-body{padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pass-col h4{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.pass-col h4.pro{color:#7ab87d}
+.pass-col h4.con{color:#e07065}
+.pass-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.pass-list li{font-size:13px;display:flex;gap:8px;color:rgba(255,255,255,0.5);line-height:1.5}
+.pass-foot{padding:18px 32px;border-top:1px solid rgba(255,255,255,0.07);font-size:12.5px;color:rgba(255,255,255,0.4);display:flex;gap:8px;align-items:flex-start}
+
+/* DINNER */
+.dinner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.dinner-card{background:#131920;border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden}
+.dinner-img{height:200px;overflow:hidden}
+.dinner-img img{width:100%;height:100%;object-fit:cover;display:block}
+.dinner-info{padding:20px 22px}
+.dinner-tag2{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a7a9b;margin-bottom:8px}
+.dinner-info h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:#f0f4f8;margin-bottom:8px}
+.dinner-info p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:10px}
+.dinner-info a{font-size:12px;color:#7ab8d4;text-decoration:none;font-weight:500}
+
+/* WARNINGS */
+.warn-list{display:flex;flex-direction:column;gap:12px}
+.warn-item{background:#131920;border:1px solid rgba(255,255,255,0.06);border-left:3px solid #c4913a;border-radius:8px;padding:16px 20px}
+.warn-item strong{display:block;color:#f0f4f8;margin-bottom:4px;font-size:14px}
+.warn-item p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.55}
+
+/* SUMMARY TABLE */
+.sum-table{width:100%;border-collapse:collapse;font-size:13.5px}
+.sum-table thead th{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#4a7a9b;text-align:left;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.07);background:#0f161d}
+.sum-table tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);transition:background .15s}
+.sum-table tbody tr:hover{background:rgba(255,255,255,0.03)}
+.sum-table tbody td{padding:13px 14px;color:rgba(255,255,255,0.5);vertical-align:middle}
+.sum-table tbody td:first-child{color:#f0f4f8;font-weight:500;white-space:nowrap}
+.idot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.il{background:#4a7c59}.im{background:#c4913a}.ih{background:#c0392b}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  .activity,.moment-spa{grid-template-columns:1fr}
+  .activity.reverse{direction:ltr}
+  .photo-grid{grid-template-columns:1fr 1fr}
+  .pass-body{grid-template-columns:1fr}
+  .dinner-grid{grid-template-columns:1fr}
+  .hero-content{padding:0 20px 56px}
+  section{padding:56px 16px}
+  .video-block iframe{height:260px}
+}
+@media(max-width:480px){.photo-grid{grid-template-columns:1fr}}
+
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-img" src="lago_bachalpsee.jfif" alt="Bachalpsee Alpes suizos">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Guía personal de viaje · 2025</div>
+    <h1>Lago Como<br>& <em>Suiza</em></h1>
+    <div class="hero-dates">
+      <strong>4 — 12 Julio 2025</strong>
+      <span>· 9 días</span>
+      <span>· Como · Lucerna · Interlaken</span>
+      <span>· Coche desde Milán</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Explora</div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="goTo('d4',this)">Sáb 4</button>
+    <button class="nav-btn" onclick="goTo('d5',this)">Dom 5</button>
+    <button class="nav-btn" onclick="goTo('d6',this)">Lun 6</button>
+    <button class="nav-btn" onclick="goTo('d7',this)">Mar 7</button>
+    <button class="nav-btn" onclick="goTo('d8',this)">Mié 8</button>
+    <button class="nav-btn" onclick="goTo('d9',this)">Jue 9</button>
+    <button class="nav-btn" onclick="goTo('d10',this)">Vie 10</button>
+    <button class="nav-btn" onclick="goTo('d11',this)">Sáb 11</button>
+    <button class="nav-btn" onclick="goTo('d12',this)">Dom 12</button>
+    <button class="nav-btn" onclick="goTo('pase',this)">Jungfrau Pass</button>
+    <button class="nav-btn" onclick="goTo('cenas',this)">Cenas</button>
+    <button class="nav-btn" onclick="goTo('advertencias',this)">Advertencias</button>
+    <button class="nav-btn" onclick="goTo('resumen',this)">Resumen</button>
+  </div>
+</nav>
+
+<!-- ═══ DÍA 4 ═══ -->
+<section id="d4" class="fade-in">
+  <div class="sec-label">Día 4 · Sábado 4 de Julio</div>
+  <div class="day-intro">
+    <div class="day-tag">Lago Como · Llegada ~12:30 desde Milán</div>
+    <h2 class="day-title">Nesso · <em>Varenna</em> · Bellagio</h2>
+    <p class="day-desc">Solo tenemos medio día, pero bien aprovechado: baño en la garganta de Nesso, paseo por el pueblo más fotogénico del lago y cruce en ferry a Bellagio.</p>
+  </div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="Nesso.jpg" alt="Nesso Lago Como garganta">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Nesso · Orrido di Nesso</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~12:30 — Primera parada</div>
+      <div class="activity-name">Nesso · Orrido di Nesso</div>
+      <div class="activity-text">
+        Una garganta escondida en el corazón de un pueblo de colores. El <strong>Orrido di Nesso</strong> es una grieta en la roca por la que cae una cascada de 30 metros. Seguís los carteles marrones 800m hasta el <strong>Ponte del Lago</strong>: un puente de piedra con la garganta al fondo y el lago al frente. Desde ahí bajáis a la orilla del lago para bañaros.
+        <div class="note note-tip" style="margin-top:12px">🏊 Barandillas de baño en el lago junto al puente. Agua a temperatura perfecta en julio. Parking muy pequeño (6-7 coches): llegad sin dudar.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">🌊 Baño en lago</span>
+        <span class="chip chip-gold">📍 800m a pie</span>
+        <span class="chip chip-green">⏱ 1h-1h30</span>
+      </div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="varenna_como.jpg" alt="Varenna Lago Como">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Varenna · Paseo de los Enamorados</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~15:00 — Tarde en el lago</div>
+      <div class="activity-name">Varenna</div>
+      <div class="activity-text">
+        Uno de los pueblos más bonitos del Lago Como. Casas de colores sobre el agua, el <strong>Paseo de los Enamorados</strong> bordeando la orilla, vistas a las montañas y a Bellagio al otro lado. Aquí dejáis el coche para el resto de la tarde.
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-gold">📸 Muy fotogénico</span>
+        <span class="chip chip-lake">🚗 45 min desde Nesso</span>
+        <span class="chip chip-green">⏱ ~1h30</span>
+      </div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="bellagio.jfif" alt="Bellagio Lago Como">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Bellagio · Lago Como</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~16:30 — Ferry Varenna → Bellagio</div>
+      <div class="activity-name">Bellagio en ferry</div>
+      <div class="activity-text">
+        15 minutos cruzando el lago en ferry (cada 20-40 min, ~5,50€). Sin el coche: el parking en Bellagio es un caos y los pueblos se ven a pie. En Bellagio: el puerto con las barquitas, las calles escalonadas, el mirador desde arriba, el aperitivo mirando al lago.
+        <div class="note note-info" style="margin-top:12px">⛴️ Desde junio 2025 se puede pagar con tarjeta en el barco directamente. Primer ferry ~7:30, último ~20:00.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">⛴️ 15 min en ferry</span>
+        <span class="chip chip-gold">🍹 Aperitivo al atardecer</span>
+        <span class="chip chip-green">⏱ ~1h30 en Bellagio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moment-card fade-in" style="margin-top:3px">
+    <div class="moment-label">Momentazo del día</div>
+    <div class="moment-text">"Cruzar el Lago Como en ferry, con las montañas reflejadas en el agua y Bellagio creciendo según os acercáis."</div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 5 ═══ -->
+<section id="d5" class="fade-in">
+  <div class="sec-label">Día 5 · Domingo 5 de Julio</div>
+  <div class="day-intro">
+    <div class="day-tag">Tránsito · Como → Valle Verzasca → Lucerna · Salida 8:30</div>
+    <h2 class="day-title">⭐ <em>Lavertezzo</em> · Poza del Verzasca</h2>
+    <p class="day-desc">El día que más esperabais. Una poza de agua esmeralda bajo un puente medieval, en un valle salvaje del Ticino suizo.</p>
+  </div>
+
+  <div class="strip fade-in">
+    <img src="pontei_di_salti.jpg" alt="Ponte dei Salti Lavertezzo Valle Verzasca">
+    <div class="strip-overlay"></div>
+    <div class="strip-text">
+      <h3>Ponte dei Salti · Valle Verzasca</h3>
+      <p>Agua verde esmeralda, rocas blancas pulidas por el río, un puente medieval de doble arco. El lugar más deseado del viaje.</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="pozas_verzasca.jfif" alt="Pozas baño río Verzasca">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Pozas del río Verzasca</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~10:30 — Llegada al valle</div>
+      <div class="activity-name">Baño en las pozas del Verzasca</div>
+      <div class="activity-text">
+        Bajad al río. Las pozas más tranquilas están a unos metros del puente, entre las rocas blanquecinas. El agua está entre 10-12°C —fría pero perfectamente bañable— y su transparencia hace que parezca de cristal. Desde las rocas veis el puente y el pueblo de piedra cerrando el horizonte.
+        <div class="note note-warn" style="margin-top:12px">⚠️ Bañaos solo en las pozas señalizadas junto al puente. El río tiene corrientes ocultas peligrosas donde se estrecha. Respetar siempre las señales.</div>
+        <div class="note note-info" style="margin-top:6px">🅿️ Parking de día ~10 CHF a 500m del puente. En domingo de julio: llegad antes de las 10:30.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">🏊 Baño en poza</span>
+        <span class="chip chip-red">⚠️ Respetar señales</span>
+        <span class="chip chip-green">⏱ 2h-2h30</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-plain fade-in">
+    📍 <strong>También de camino:</strong> A 10 minutos de Lavertezzo está la <strong>Presa de Contra (Vogorno)</strong>, la presa de 220m donde se rodó el salto de bungee de James Bond en GoldenEye. Se puede cruzar a pie por la cima en 15 minutos. Las vistas al embalse son impresionantes. Parada muy corta pero vale la pena.
+  </div>
+
+  <div class="moment-card fade-in" style="margin-top:16px">
+    <div class="moment-label">⭐ Momentazo estrella del viaje</div>
+    <div class="moment-text">"Meterse en las pozas del Verzasca, agua esmeralda, silencio del valle y el puente medieval de fondo. De los que no se olvidan."</div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 6 ═══ -->
+<section id="d6" class="fade-in">
+  <div class="sec-label">Día 6 · Lunes 6 de Julio · Base Lucerna</div>
+  <div class="day-intro">
+    <div class="day-tag">Excursión desde Lucerna · Tarde de hotel</div>
+    <h2 class="day-title"><em>Aareschlucht</em> · Cañón del Aare</h2>
+    <p class="day-desc">Una grieta en la roca caliza con el río Aare de azul eléctrico. Excursión de mañana, tarde libre en el Seehotel Pilatus.</p>
+  </div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="Aareschlucht.jfif" alt="Aareschlucht cañon del Aare">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Aareschlucht · Innertkirchen</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~11:15 — Garganta</div>
+      <div class="activity-name">Aareschlucht</div>
+      <div class="activity-text">
+        Una pasarela de 1,4 km suspendida dentro de una grieta que el Aare ha excavado durante miles de años en la roca caliza. El agua es de un azul turquesa eléctrico casi irreal. La pasarela pasa por dentro de la roca con el sonido del río por todas partes. Corto en distancia, muy impactante en experiencia.
+        <div class="note note-tip" style="margin-top:12px">💡 Hay dos entradas al cañón (este y oeste). Podéis hacerlo de ida y vuelta desde una entrada, o de punta a punta y volver por fuera caminando.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">💧 Agua azul eléctrico</span>
+        <span class="chip chip-green">⏱ 1h-1h30</span>
+        <span class="chip chip-gold">🚗 1h10 desde Lucerna</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moment-spa fade-in" style="margin-top:3px">
+    <div class="moment-spa-img">
+      <img src="spa_hotel.jpg" alt="Spa hotel Lucerna">
+    </div>
+    <div class="moment-spa-text">
+      <div class="moment-label">Tarde · Seehotel Pilatus</div>
+      <div class="moment-text">"Vuelta a Lucerna ~16:00. Tarde entera de spa y hotel. El Seehotel no es solo donde dormís — es parte del viaje."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 7 ═══ -->
+<section id="d7" class="fade-in">
+  <div class="sec-label">Día 7 · Martes 7 de Julio · Base Lucerna</div>
+  <div class="day-intro">
+    <div class="day-tag">Día tranquilo · Ciudad + Spa</div>
+    <h2 class="day-title"><em>Lucerna</em> · Casco histórico · Spa</h2>
+    <p class="day-desc">El día de recargar. Mañana por la ciudad medieval más bonita de Suiza, tarde entera en el spa del hotel.</p>
+  </div>
+
+  <div class="photo-grid fade-in">
+    <div class="photo-grid-item">
+      <img src="lucerna_paisaje.jfif" alt="Lucerna paisaje lago">
+      <div class="gl">Lucerna · Lago</div>
+    </div>
+    <div class="photo-grid-item">
+      <img src="casco_historico.jfif" alt="Casco histórico Lucerna">
+      <div class="gl">Casco histórico</div>
+    </div>
+    <div class="photo-grid-item">
+      <img src="centro_lucerna.jpg" alt="Centro Lucerna">
+      <div class="gl">Centro · Kapellbrücke</div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="lucerna_a_pie.jpg" alt="Lucerna a pie paseo">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Lucerna · A pie</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">10:00-13:30 — Mañana libre</div>
+      <div class="activity-name">Lucerna a pie</div>
+      <div class="activity-text">
+        El <strong>Kapellbrücke</strong>: el puente de madera más antiguo de Suiza, con pinturas del siglo XVII en su interior. El <strong>Löwendenkmal</strong>: el León de Lucerna, una escultura de 6 metros tallada directamente en la roca. La muralla medieval con vistas al lago. Callejeo por el casco antiguo sin ninguna prisa.
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">🏛 Patrimonio medieval</span>
+        <span class="chip chip-green">⏱ Mañana entera</span>
+        <span class="chip chip-gold">🦶 Todo a pie</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moment-spa fade-in" style="margin-top:3px">
+    <div class="moment-spa-img">
+      <img src="spa_hotel.jpg" alt="Spa hotel Seehotel Pilatus">
+    </div>
+    <div class="moment-spa-text">
+      <div class="moment-label">Tarde · Seehotel Pilatus</div>
+      <div class="moment-text">"No todos los días del viaje tienen que ser épicos. Este es el que os recarga para los tres días de Alpes que vienen."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 8 ═══ -->
+<section id="d8" class="fade-in">
+  <div class="sec-label">Día 8 · Miércoles 8 de Julio · Cambio de base</div>
+  <div class="day-intro">
+    <div class="day-tag">Lucerna → Interlaken · 1h15 en coche</div>
+    <h2 class="day-title">Interlaken · <em>Harder Kulm</em> al atardecer</h2>
+    <p class="day-desc">Trayecto tranquilo de mañana, instalación en el apartamento y primer atardecer épico desde el mirador sobre los dos lagos.</p>
+  </div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="funicular_interlaken.jpg" alt="Harder Kulm Interlaken funicular atardecer">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Harder Kulm · Top of Interlaken</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~20:00 — Atardecer</div>
+      <div class="activity-name">Harder Kulm</div>
+      <div class="activity-text">
+        El funicular sube 10 minutos desde Interlaken Ost hasta los 1.322m. Arriba, una plataforma colgante sobre el vacío con la Jungfrau, el Eiger y el Mönch al frente, y los lagos Thun y Brienz a izquierda y derecha.<br><br>
+        Subid <strong>una hora antes del atardecer</strong>. En julio el sol se pone a las ~21:15, así que subid sobre las 20:00-20:15. El restaurante del mirador sirve cena con esa vista de fondo.
+        <div class="note note-info" style="margin-top:12px">🌅 Perfecto bienvenido a Interlaken. Hay fauna alpina (marmotas, íbices) en la bajada con luz dorada.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-gold">🌅 Atardecer sobre dos lagos</span>
+        <span class="chip chip-lake">🚠 Funicular 10 min</span>
+        <span class="chip chip-green">🍽 Cena en el mirador</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 9 ═══ -->
+<section id="d9" class="fade-in">
+  <div class="sec-label">Día 9 · Jueves 9 de Julio · ⭐ Día estrella</div>
+  <div class="day-intro">
+    <div class="day-tag">Grindelwald · Salida en tren a las 8:00</div>
+    <h2 class="day-title">First · Tirolina · <em>Bachalpsee</em></h2>
+    <p class="day-desc">El día más completo del viaje. Tirolina sobre el abismo, pasarela colgante con el Eiger de frente y el lago alpino más icónico de los Alpes.</p>
+  </div>
+
+  
+  <div class="gap"></div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="first_cliff.jfif" alt="Grindelwald First Cliff Walk Eiger">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">First Cliff Walk · Eiger al fondo</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~9:00 — Después de la tirolina</div>
+      <div class="activity-name">First Cliff Walk</div>
+      <div class="activity-text">
+        Pasarela metálica anclada en la roca a 45 metros sobre el vacío. Gratuita con el billete de gondola. Al final, una plataforma en voladizo desde la que el Eiger parece poder tocarse con la mano y el valle de Grindelwald se extiende 1.000 metros abajo.
+        <div class="note note-warn" style="margin-top:12px">🕗 Tren obligatorio desde Interlaken Ost. El parking junto a la telecabina está siempre lleno en julio. Comprad el billete de gondola online con antelación.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">🏔 Eiger face-to-face</span>
+        <span class="chip chip-gold">📸 Fotos de postal</span>
+        <span class="chip chip-green">⏱ ~30 min · Gratuita</span>
+      </div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="strip fade-in">
+    <img src="lago_bachalpsee.jfif" alt="Lago Bachalpsee Grindelwald">
+    <div class="strip-overlay"></div>
+    <div class="strip-text">
+      <h3>Lago Bachalpsee · 2265m</h3>
+      <p>El Eiger, el Mönch y el Finsteraarhorn reflejados enteros en el agua quieta. Una hora de ruta fácil desde First. El lago que no cabe en ninguna foto.</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="bajada_blumemweg.jfif" alt="Blumenweg bajada Grindelwald First Bort">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Bajada por el Blumenweg → Bort</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~13:30 — Bajada alternativa</div>
+      <div class="activity-name">Bajada por el Blumenweg</div>
+      <div class="activity-text">
+        En lugar de volver por el mismo camino, bajáis por el <strong>Blumenweg</strong> (sendero de las flores) desde First hasta la estación intermedia de <strong>Bort</strong>. Unos 1h-1h15 de bajada con paisaje diferente al de subida: más florido, más verde, con vistas constantes al Eiger y el fondo del valle. Desde Bort cogéis la gondola abajo.
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-green">🌸 Sendero de las flores</span>
+        <span class="chip chip-lake">🚡 Gondola desde Bort</span>
+        <span class="chip chip-gold">⏱ ~1h-1h15</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moment-card fade-in" style="margin-top:3px">
+    <div class="moment-label">⭐ Momentazo del día</div>
+    <div class="moment-text">"El Bachalpsee aparece al doblar el último recodo: agua quieta, el Eiger y el Mönch reflejados enteros. Uno de esos momentos que no caben en una foto."</div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 10 ═══ -->
+<section id="d10" class="fade-in">
+  <div class="sec-label">Día 10 · Viernes 10 de Julio · ⭐ Lagos</div>
+  <div class="day-intro">
+    <div class="day-tag">Blausee · Kandersteg · Oeschinensee · Salida 9:00</div>
+    <h2 class="day-title">Blausee · <em>Oeschinensee</em> desde arriba</h2>
+    <p class="day-desc">El día de los lagos imposibles. El azul más profundo de Suiza y después la ruta mirador sobre el Oeschinensee turquesa.</p>
+  </div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="blausee.jpg" alt="Blausee lago azul Suiza">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Blausee · El lago azul</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~9:45 — Aperitivo de lago</div>
+      <div class="activity-name">Blausee</div>
+      <div class="activity-text">
+        Solo 0,64 hectáreas pero con un azul tan intenso que parece irreal. Se formó hace 15.000 años por un deslizamiento de roca. Sus troncos sumergidos parecen estar a centímetros, pero están a 12 metros de profundidad.<br><br>
+        <strong>Barca de fondo de cristal</strong> incluida en la entrada (~12 CHF): un remero os da una vuelta de 10-15 min. El efecto de ver el fondo a través del agua es casi alucinante. No se puede nadar, pero la visita es mágica. 1h-1h30 máximo: es el aperitivo del día.
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">💙 Azul imposible</span>
+        <span class="chip chip-gold">⛵ Barca fondo cristal</span>
+        <span class="chip chip-green">⏱ 1h-1h30</span>
+      </div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="strip fade-in">
+    <img src="oeschinensee.jfif" alt="Oeschinensee lago turquesa Kandersteg">
+    <div class="strip-overlay"></div>
+    <div class="strip-text">
+      <h3>Oeschinensee · 1578m</h3>
+      <p>Agua turquesa rodeada de paredes rocosas de 3000m. Uno de los lagos más bonitos de Europa — y vais a verlo desde arriba.</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity reverse fade-in">
+    <div class="activity-img">
+      <img src="mirador_oeschinensee.jfif" alt="Ruta mirador Oberbärgli Heuberg Oeschinensee">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Mirador Heuberg · Sobre el Oeschinensee</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~14:00 — Ruta mirador</div>
+      <div class="activity-name">Ruta Oberbärgli · Mirador Heuberg</div>
+      <div class="activity-text">
+        Desde la estación superior del teleférico subís hacia el norte ganando altura. El <strong>mirador de Heuberg (1940m)</strong> está colgado literalmente sobre el lago: el agua turquesa brilla 400m abajo y el macizo del Blüemlisalp con sus nieves eternas cierra el horizonte.<br><br>
+        La perspectiva aérea hace que el lago se vea de colores imposibles de apreciar desde la orilla. Es la ruta que buscabais.
+        <div class="note note-warn" style="margin-top:12px">🎫 Reservar teleférico online con antelación (40 CHF adulto). El parking de Kandersteg se llena antes de las 12:00 en verano.</div>
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">🏔 Vista aérea del lago</span>
+        <span class="chip chip-red">💪 3-4h · Desnivel ~400m</span>
+        <span class="chip chip-green">⏱ Tarde entera</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moment-card fade-in" style="margin-top:3px">
+    <div class="moment-label">⭐ Momentazo del día</div>
+    <div class="moment-text">"El Oeschinensee desde el mirador de Heuberg: azul imposible, paredes de roca cerrándolo, nieve en pleno julio. El lago que más veces habéis visto en pantalla, en directo desde arriba."</div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 11 ═══ -->
+<section id="d11" class="fade-in">
+  <div class="sec-label">Día 11 · Sábado 11 de Julio · Última noche grande</div>
+  <div class="day-intro">
+    <div class="day-tag">Lauterbrunnen · Cascadas · Cena atardecer</div>
+    <h2 class="day-title"><em>Lauterbrunnen</em> · Trümmelbach · Cena</h2>
+    <p class="day-desc">El valle que inspiró Rivendell a Tolkien. 72 cascadas, las más grandes de Europa dentro de la roca, y cena al atardecer junto al lago.</p>
+  </div>
+
+  <div class="strip fade-in">
+    <img src="lauterbrunnen.jfif" alt="Lauterbrunnen valle cascadas Alpes">
+    <div class="strip-overlay"></div>
+    <div class="strip-text">
+      <h3>Lauterbrunnen</h3>
+      <p>Paredes verticales de 300 metros, cascadas cayendo por todas partes, prados verdes perfectos. Tolkien visitó este lugar en 1911 y fue la inspiración directa de Rivendell.</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  <div class="activity fade-in">
+    <div class="activity-img">
+      <img src="Staubbach_Falls.jfif" alt="Staubbach Falls Lauterbrunnen cascada 300m">
+      <div class="activity-img-overlay"></div>
+      <div class="activity-img-label">Staubbach Falls · 300 metros</div>
+    </div>
+    <div class="activity-content">
+      <div class="activity-time">~10:30 — Mañana</div>
+      <div class="activity-name">Staubbach Falls</div>
+      <div class="activity-text">
+        El salto más icónico del valle: casi 300 metros de caída libre. El viento convierte el agua en polvo (Staub = polvo en alemán). Hay una galería peatonal que sube hasta la base del salto, abierta de mayo a octubre. Desde ahí el spray moja la cara y la vista del valle desde arriba es impresionante.
+      </div>
+      <div class="activity-chips">
+        <span class="chip chip-lake">💧 300m de caída</span>
+        <span class="chip chip-green">🦶 Galería peatonal</span>
+        <span class="chip chip-gold">⏱ ~1h en el pueblo</span>
+      </div>
+    </div>
+  </div>
+  <div class="gap"></div>
+
+  
+
+  <div class="moment-card fade-in" style="margin-top:3px">
+    <div class="moment-label">Momentazo del día</div>
+    <div class="moment-text">"Las Trümmelbach: el agua del Eiger cayendo en la oscuridad de la roca. El ruido es tan grande que no podéis hablar. Y al salir, el valle quieto de Lauterbrunnen."</div>
+  </div>
+</section>
+
+<!-- ═══ DÍA 12 ═══ -->
+<section id="d12" class="fade-in">
+  <div class="sec-label">Día 12 · Domingo 12 de Julio · Fin del viaje</div>
+  <div class="day-intro">
+    <div class="day-tag">Salida 8:00 · Interlaken → Milán · ~3h</div>
+    <h2 class="day-title">Vuelta a <em>Milán</em></h2>
+    <p class="day-desc">Ruta por el túnel del San Gottardo, pasando de nuevo por el Ticino que visitasteis a la ida.</p>
+  </div>
+  <div class="note note-info" style="max-width:620px">
+    🚗 Interlaken → Berna → San Gottardo → Lugano → Milán. De paso, Bellinzona y sus tres castillos medievales (Patrimonio UNESCO) si tenéis margen de tiempo antes del vuelo.
+  </div>
+</section>
+
+<!-- ═══ JUNGFRAU PASS ═══ -->
+<section id="pase" class="fade-in">
+  <div class="sec-label">Transporte · Región Jungfrau</div>
+  <div class="pass-card">
+    <div class="pass-head">
+      <h3>Jungfrau Travel Pass</h3>
+      <p>Pase de transporte para la región Jungfrau · 3 a 8 días consecutivos · <a href="https://www.jungfrau.ch/en-gb/jungfrau-travel-pass/" target="_blank">jungfrau.ch</a></p>
+    </div>
+    <div class="pass-body">
+      <div class="pass-col">
+        <h4 class="pro">✓ Incluye y ventajas</h4>
+        <ul class="pass-list">
+          <li><span style="color:#7ab87d">✓</span> Tren Interlaken ↔ Grindelwald (día 9)</li>
+          <li><span style="color:#7ab87d">✓</span> Telecabina Grindelwald First con descuento significativo</li>
+          <li><span style="color:#7ab87d">✓</span> Funicular Harder Kulm incluido (día 8)</li>
+          <li><span style="color:#7ab87d">✓</span> Tren Interlaken ↔ Lauterbrunnen (día 11)</li>
+          <li><span style="color:#7ab87d">✓</span> Descuento en teleférico Oeschinensee (día 10)</li>
+          <li><span style="color:#7ab87d">✓</span> Sin colas en taquillas en días clave de julio</li>
+          <li><span style="color:#7ab87d">✓</span> Con muchos transportes en 3-4 días se amortiza claramente</li>
+        </ul>
+      </div>
+      <div class="pass-col">
+        <h4 class="con">✗ Lo que no cubre</h4>
+        <ul class="pass-list">
+          <li><span style="color:#e07065">✗</span> Precio elevado — verificar tarifa exacta 2025 en jungfrau.ch</li>
+          <li><span style="color:#e07065">✗</span> Solo días consecutivos: si hacéis pausa no suma</li>
+          <li><span style="color:#e07065">✗</span> No incluye la tirolina First Flyer (se paga aparte)</li>
+          <li><span style="color:#e07065">✗</span> No incluye Trümmelbach Falls</li>
+          <li><span style="color:#e07065">✗</span> No cubre parking en Kandersteg</li>
+          <li><span style="color:#e07065">✗</span> Con pocos transportes puede no compensar frente a comprar suelto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pass-foot">
+      <span>⚠️</span>
+      <span>Comparad el coste de los tickets sueltos (gondola First + Harder Kulm + trenes) con el precio del pase antes de comprarlo. Con vuestro itinerario tiene muchas papeletas de salir rentable.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ADVERTENCIAS ═══ -->
+<section id="advertencias" class="fade-in">
+  <div class="sec-label">Advertencias y notas clave</div>
+  <div class="warn-list">
+    <div class="warn-item">
+      <strong>Lavertezzo · Corrientes del Verzasca</strong>
+      <p>El río tiene corrientes y remolinos invisibles desde la superficie. Bañaos solo en las pozas señalizadas junto al Ponte dei Salti. Nunca donde el río se estrecha. Respetar siempre las señales: cada verano hay accidentes por imprudencias.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Lavertezzo · Domingo de julio = masificación</strong>
+      <p>Llegad antes de las 10:30. El parking de día (500m del puente, 10 CHF) es vuestra mejor opción. El del pueblo tiene límite de 3h.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Grindelwald First · Tren obligatorio</strong>
+      <p>El parking junto a la telecabina está en obras y siempre lleno en julio. Ir en coche es perder el tiempo. Tren desde Interlaken Ost. Comprad el billete de gondola online con antelación.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Oeschinensee · Reserva online y parking</strong>
+      <p>Desde 2025 la web recomienda reservar el teleférico online para julio (40 CHF adulto). El parking de Kandersteg se llena antes de las 12:00. Llegad antes de las 11:30. Zona restringida en orilla sureste: prohibición absoluta de acceso.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Blausee · No se puede nadar</strong>
+      <p>Parque natural protegido. La visita es contemplativa: paseo perimetral y barca de fondo de cristal. Sin baño.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Trümmelbach Falls · Horario estricto</strong>
+      <p>Abiertas de 9:00 a 17:00. Última entrada antes de las 17:00. No lo dejéis para el final de la tarde.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Tiempo en montaña · Tormentas de tarde</strong>
+      <p>En julio pueden aparecer tormentas en los Alpes a partir de las 15:00-16:00. Los días de excursión a altura, comprobad la webcam y la previsión antes de salir. Bajad siempre antes de las 16:00 en días de inestabilidad.</p>
+    </div>
+    <div class="warn-item">
+      <strong>Nesso · Parking mínimo</strong>
+      <p>Solo 6-7 coches junto al Orrido. Llegad antes de las 13:00. Hay un segundo parking algo más arriba si el primero está lleno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESUMEN ═══ -->
+<section id="resumen" class="fade-in">
+  <div class="sec-label">Resumen del itinerario</div>
+  <div style="overflow-x:auto">
+    <table class="sum-table">
+      <thead>
+        <tr><th>Día</th><th>Fecha</th><th>Destino principal</th><th>Tipo</th><th>Intensidad</th><th>Base</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Día 4</td><td>Sáb 4 Jul</td><td>Nesso · Varenna · Bellagio</td><td>Lagos · Pueblo</td><td><span class="idot im"></span>Media</td><td>Como</td></tr>
+        <tr><td>Día 5</td><td>Dom 5 Jul</td><td>⭐ Lavertezzo · Poza Verzasca</td><td>Baño · Tránsito</td><td><span class="idot im"></span>Media-Alta</td><td>→ Lucerna</td></tr>
+        <tr><td>Día 6</td><td>Lun 6 Jul</td><td>Aareschlucht · Tarde spa</td><td>Garganta · Hotel</td><td><span class="idot im"></span>Media</td><td>Lucerna</td></tr>
+        <tr><td>Día 7</td><td>Mar 7 Jul</td><td>Lucerna casco histórico · Spa</td><td>Ciudad · Descanso</td><td><span class="idot il"></span>Baja</td><td>Lucerna</td></tr>
+        <tr><td>Día 8</td><td>Mié 8 Jul</td><td>Tránsito · Harder Kulm atardecer</td><td>Cambio de base</td><td><span class="idot il"></span>Baja</td><td>→ Interlaken</td></tr>
+        <tr><td>Día 9</td><td>Jue 9 Jul</td><td>⭐ Grindelwald First · Tirolina · Bachalpsee</td><td>Ruta alpina</td><td><span class="idot ih"></span>Alta</td><td>Interlaken</td></tr>
+        <tr><td>Día 10</td><td>Vie 10 Jul</td><td>⭐ Blausee · Oeschinensee · Mirador</td><td>Lagos · Senderismo</td><td><span class="idot ih"></span>Alta</td><td>Interlaken</td></tr>
+        <tr><td>Día 11</td><td>Sáb 11 Jul</td><td>Lauterbrunnen · Trümmelbach · Cena</td><td>Cascadas</td><td><span class="idot im"></span>Media</td><td>Interlaken</td></tr>
+        <tr><td>Día 12</td><td>Dom 12 Jul</td><td>Interlaken → Milán</td><td>Vuelta</td><td>—</td><td>Milán</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer style="background:#080c11;color:rgba(255,255,255,0.2);text-align:center;padding:32px 24px;font-size:12px;letter-spacing:0.08em">
+  Como &amp; Suiza · Julio 2025 · Guía personal de viaje
+</footer>
+
+<script>
+function goTo(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 52;
+  window.scrollTo({ top, behavior: 'smooth' });
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+const ids = ['d4','d5','d6','d7','d8','d9','d10','d11','d12','pase','cenas','advertencias','resumen'];
+const btns = document.querySelectorAll('.nav-btn');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 100) cur = id;
+  });
+  btns.forEach((b, i) => b.classList.toggle('active', i < ids.length && ids[i] === cur));
+});
+</script>
+</body>
+</html>
